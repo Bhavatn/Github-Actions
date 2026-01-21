@@ -1,0 +1,17 @@
+name: Failure Handling Demo
+
+on:
+  push:
+
+jobs:
+  test-failure-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1: Print message
+        run: echo "Step 1: This step works fine ✅"
+
+      - name: Step 2: Fail intentionally
+        run: exit 1
+
+      - name: Step 3: Should be skipped if previous failed
+        run: echo "Step 3: You should NOT see this message ❌"
